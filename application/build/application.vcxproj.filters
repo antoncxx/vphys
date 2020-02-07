@@ -4,10 +4,33 @@
     <Filter Include="source">
       <UniqueIdentifier>{0035e751-e36b-4d50-82ef-a3aa1330cdfd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\utils">
+      <UniqueIdentifier>{a131e6ba-0a40-4bad-bf3c-8efc2e7c5517}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\source\main.cpp">
+    <ClCompile Include="..\source\application.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\main_window.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\utils\utils.cpp">
+      <Filter>source\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\winmain.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\application.hpp">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\main_window.hpp">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\utils\utils.hpp">
+      <Filter>source\utils</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
