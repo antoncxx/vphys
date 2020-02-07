@@ -1,42 +1,46 @@
 #include "main_window.hpp"
 
 MainWindow::MainWindow(HINSTANCE handle, int width, int height, const std::string& title) noexcept 
-    : width(width), height(height), title(title), handle(handle) {
+    : width(width), height(height), handle(handle) {
 
     isRegistered = RegisterMainClass();
     isCreated    = CreateMainWindow();
+
+    CreateControls();
 }
 
 MainWindow::~MainWindow() noexcept {
+    DestroyControls();
+    
     DestroyMainWindow();
     UnregisterMainClass();
 }
 
 bool MainWindow::RegisterMainClass() const noexcept {
-    WNDCLASSA ws;
-    memset(&ws, 0, sizeof(WNDCLASSA));
+    WNDCLASS wc;
+    memset(&wc, 0, sizeof(WNDCLASSA));
 
-    if (!GetClassInfoA(handle, sClassName, &ws)) {
-        ws.style         = 0;
-        ws.hInstance     = handle;
-        ws.lpszClassName = sClassName;
-        ws.lpfnWndProc   = WindowProc;
+    if (!GetClassInfo(handle, sClassName, &wc)) {
+        wc.style         = 0;
+        wc.hInstance     = handle;
+        wc.lpszClassName = sClassName;
+        wc.lpfnWndProc   = WindowProc;
 
-        ws.cbClsExtra    = 0;
-        ws.cbWndExtra    = sizeof(LONG_PTR);
-        ws.hbrBackground = (HBRUSH)(COLOR_BTNFACE + 1);
+        wc.cbClsExtra    = 0;
+        wc.cbWndExtra    = sizeof(LONG_PTR);
+        wc.hbrBackground = (HBRUSH)(COLOR_BTNFACE + 1);
 
-        ws.hIcon         = NULL;
-        ws.hCursor       = NULL;
-        ws.lpszMenuName  = NULL;
+        wc.hIcon         = NULL;
+        wc.hCursor       = NULL;
+        wc.lpszMenuName  = NULL;
     }
 
-    return RegisterClass(&ws) != 0;
+    return RegisterClass(&wc) != 0;
 }
 
 bool MainWindow::CreateMainWindow() noexcept {
     if (IsRegistered()) {
-        hwnd = CreateWindow(sClassName, title.c_str(), WS_VISIBLE | WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, width, height, NULL, NULL, handle, this);
+        hwnd = CreateWindow(sClassName, NULL, WS_VISIBLE | WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, width, height, NULL, NULL, handle, this);
     }
     return hwnd != NULL;
 }
@@ -55,6 +59,17 @@ void MainWindow::DestroyMainWindow() noexcept {
     isCreated = false;
 }
 
+void MainWindow::CreateControls() noexcept {
+    canvas = new (std::nothrow) Canvas(hwnd, { 30, 30 }, { 100,100 });
+}
+
+void MainWindow::DestroyControls() noexcept {
+    if (canvas != nullptr) {
+        delete canvas;
+        canvas = nullptr;
+    }
+}
+
 LRESULT CALLBACK MainWindow::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     if (uMsg == WM_NCCREATE) {
         MainWindow* window = reinterpret_cast<MainWindow*>(lParam);
@@ -63,7 +78,7 @@ LRESULT CALLBACK MainWindow::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
     }
 
     auto window = reinterpret_cast<MainWindow*>(GetWindowLongPtr(hwnd, GWL_USERDATA));
-    if (window == nullptr) { // To prevent WM_SIZE before WM_NCCREATE
+    if (window == nullptr) { 
         return FALSE; 
     }
 

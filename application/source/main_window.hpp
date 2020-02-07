@@ -1,6 +1,7 @@
 #pragma once
 
 #include "utils/utils.hpp"
+#include "gui/canvas.hpp"
 
 #include <windows.h>
 #include <windowsx.h>
@@ -12,10 +13,11 @@ class MainWindow : public NonCopybale, public NonMovable {
     HWND        hwnd;
     int         width;
     int         height;
-    std::string title;
 
     bool isRegistered{ false };
     bool isCreated{ false };
+
+    Canvas* canvas;
 
     static inline const char* sClassName = "MAIN_WINDOW_CLASS";
     static LRESULT CALLBACK WindowProc(HWND, UINT, WPARAM, LPARAM);
@@ -34,4 +36,7 @@ private:
 
     void UnregisterMainClass() noexcept;
     void DestroyMainWindow() noexcept;
+
+    void CreateControls() noexcept;
+    void DestroyControls() noexcept;
 };

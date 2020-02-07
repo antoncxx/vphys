@@ -92,6 +92,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>d3d9.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -140,16 +141,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\source\application.cpp" />
+    <ClCompile Include="..\source\gui\canvas.cpp" />
     <ClCompile Include="..\source\winmain.cpp" />
     <ClCompile Include="..\source\main_window.cpp" />
     <ClCompile Include="..\source\utils\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\application.hpp" />
+    <ClInclude Include="..\source\gui\canvas.hpp" />
     <ClInclude Include="..\source\main_window.hpp" />
     <ClInclude Include="..\source\utils\utils.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
 </Project>

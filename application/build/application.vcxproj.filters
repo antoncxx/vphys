@@ -7,6 +7,9 @@
     <Filter Include="source\utils">
       <UniqueIdentifier>{a131e6ba-0a40-4bad-bf3c-8efc2e7c5517}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\gui">
+      <UniqueIdentifier>{2cfb6784-e885-4891-9e4a-3228ef053f19}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\source\application.cpp">
@@ -21,6 +24,9 @@
     <ClCompile Include="..\source\winmain.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\gui\canvas.cpp">
+      <Filter>source\gui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\application.hpp">
@@ -31,6 +37,9 @@
     </ClInclude>
     <ClInclude Include="..\source\utils\utils.hpp">
       <Filter>source\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\canvas.hpp">
+      <Filter>source\gui</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
