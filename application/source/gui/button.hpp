@@ -14,6 +14,4 @@ public:
 private:
     NODISCARD bool CreateControl(HWND) noexcept override;
     void DestroyControl() noexcept override;
-
-    NODISCARD bool CheckRegistration() const noexcept;
 };

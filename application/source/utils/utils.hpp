@@ -3,13 +3,15 @@
 #define NODISCARD    [[nodiscard]]
 #define FALLTHROUGH  [[fallthrough]]
 
-class NonCopybale {
-protected:
-    NonCopybale(const NonCopybale&) = delete;
-    NonCopybale& operator=(const NonCopybale&) = delete;
+#define UNUSEDPARAM(P) (void)(P)
 
-    NonCopybale() = default;
-    ~NonCopybale() = default;
+class NonCopyable {
+protected:
+    NonCopyable(const NonCopyable&) = delete;
+    NonCopyable& operator=(const NonCopyable&) = delete;
+
+    NonCopyable() = default;
+    ~NonCopyable() = default;
 };
 
 class NonMovable {

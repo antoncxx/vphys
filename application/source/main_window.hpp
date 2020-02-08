@@ -11,11 +11,7 @@
 #include <memory>
 #include <list>
 
-using ControlPtr   = std::unique_ptr<Control>;
-using ControlsList = std::list<ControlPtr>;
-
-
-class MainWindow : public NonCopybale, public NonMovable { 
+class MainWindow : public NonCopyable, public NonMovable {
     HINSTANCE   handle;
     HWND        hwnd;
     int         width;
@@ -24,8 +20,8 @@ class MainWindow : public NonCopybale, public NonMovable {
     bool isRegistered{ false };
     bool isCreated{ false };
 
-    ControlsList controls;
-
+    IRenderer* renderer;
+    Control* button;
     static inline const char* sClassName = "MAIN_WINDOW_CLASS";
     static LRESULT CALLBACK WindowProc(HWND, UINT, WPARAM, LPARAM);
 public:
@@ -34,9 +30,13 @@ public:
 
     NODISCARD inline bool IsRegistered() const noexcept { return isRegistered; }
     NODISCARD inline bool IsCreated()    const noexcept { return isCreated; }
-   
+    
+    NODISCARD bool CheckControls() const noexcept;
+
     NODISCARD inline int Width()  const noexcept { return width; }
     NODISCARD inline int Height() const noexcept { return height; }
+
+    void Update() noexcept;
 private:
     NODISCARD bool RegisterMainClass() const noexcept;
     NODISCARD bool CreateMainWindow() noexcept;

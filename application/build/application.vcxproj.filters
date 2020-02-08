@@ -33,6 +33,9 @@
     <ClCompile Include="..\source\gui\control.cpp">
       <Filter>source\gui</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\gui\d2dcotext.cpp">
+      <Filter>source\gui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\application.hpp">
@@ -51,6 +54,12 @@
       <Filter>source\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\source\gui\control.hpp">
+      <Filter>source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\d2dcotext.hpp">
+      <Filter>source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\irenderer.hpp">
       <Filter>source\gui</Filter>
     </ClInclude>
   </ItemGroup>

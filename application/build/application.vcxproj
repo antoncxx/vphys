@@ -92,7 +92,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d3d9.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d2d1.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -144,6 +144,7 @@
     <ClCompile Include="..\source\gui\button.cpp" />
     <ClCompile Include="..\source\gui\canvas.cpp" />
     <ClCompile Include="..\source\gui\control.cpp" />
+    <ClCompile Include="..\source\gui\d2dcotext.cpp" />
     <ClCompile Include="..\source\winmain.cpp" />
     <ClCompile Include="..\source\main_window.cpp" />
     <ClCompile Include="..\source\utils\utils.cpp" />
@@ -153,6 +154,8 @@
     <ClInclude Include="..\source\gui\button.hpp" />
     <ClInclude Include="..\source\gui\canvas.hpp" />
     <ClInclude Include="..\source\gui\control.hpp" />
+    <ClInclude Include="..\source\gui\d2dcotext.hpp" />
+    <ClInclude Include="..\source\gui\irenderer.hpp" />
     <ClInclude Include="..\source\main_window.hpp" />
     <ClInclude Include="..\source\utils\utils.hpp" />
   </ItemGroup>

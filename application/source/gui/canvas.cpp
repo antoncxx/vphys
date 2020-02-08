@@ -2,12 +2,12 @@
 
 Canvas::Canvas(HWND parent, POINT position, SIZE size) noexcept 
     : Control(position, size) {
-
-    isRegistered = RegisterCanvasClass();
-    isCreated    = CreateControl(parent);
+    isCreated = CreateControl(parent);
+    d2Context.Initialize(hwnd);
 }
 
 Canvas::~Canvas() noexcept {
+    d2Context.Finalize();
     DestroyControl();
     UnregisterCanvasClass();
 }
@@ -24,7 +24,7 @@ bool Canvas::RegisterCanvasClass() const noexcept {
 
         wc.cbClsExtra    = 0;
         wc.cbWndExtra    = sizeof(LONG_PTR);
-        wc.hbrBackground = (HBRUSH)(COLOR_BTNFACE + 2);
+        wc.hbrBackground = (HBRUSH)(COLOR_BTNFACE + 1);
 
         wc.hIcon         = NULL;
         wc.hCursor       = NULL;
@@ -35,7 +35,7 @@ bool Canvas::RegisterCanvasClass() const noexcept {
 }
 
 bool Canvas::CreateControl(HWND parent) noexcept {
-    if (IsRegistered()) {
+    if (RegisterCanvasClass()) {
         hwnd = CreateWindow(sClassName, NULL, WS_VISIBLE | WS_CHILD, position.x, position.y, size.cx, size.cy, parent, NULL, reinterpret_cast<HINSTANCE>(GetWindowLong(parent, GWL_HINSTANCE)), this);
     }
 
@@ -44,11 +44,19 @@ bool Canvas::CreateControl(HWND parent) noexcept {
 
 void Canvas::UnregisterCanvasClass() noexcept {
     UnregisterClass(sClassName, GetModuleHandle(NULL));
-    isRegistered = false;
 }
 
 void Canvas::DestroyControl() noexcept {
     Control::DestroyControl();
+}
+
+void Canvas::Redraw() noexcept {
+    auto rt = d2Context.GetRenderTarget();
+
+    rt->BeginDraw();
+    rt->Clear(D2D1::ColorF(D2D1::ColorF::Green));
+    // add drawing code here
+    rt->EndDraw();
 }
 
 LRESULT CALLBACK Canvas::CanvasProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
@@ -63,11 +71,5 @@ LRESULT CALLBACK Canvas::CanvasProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM 
         return FALSE;
     }
 
-    switch (uMsg) {
-
-    default:
-        return DefWindowProc(hwnd, uMsg, wParam, lParam);
-    }
-
-    return TRUE;
+    return DefWindowProc(hwnd, uMsg, wParam, lParam);
 }
