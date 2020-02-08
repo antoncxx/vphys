@@ -27,6 +27,12 @@
     <ClCompile Include="..\source\gui\canvas.cpp">
       <Filter>source\gui</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\gui\button.cpp">
+      <Filter>source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\gui\control.cpp">
+      <Filter>source\gui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\application.hpp">
@@ -39,6 +45,12 @@
       <Filter>source\utils</Filter>
     </ClInclude>
     <ClInclude Include="..\source\gui\canvas.hpp">
+      <Filter>source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\button.hpp">
+      <Filter>source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\gui\control.hpp">
       <Filter>source\gui</Filter>
     </ClInclude>
   </ItemGroup>

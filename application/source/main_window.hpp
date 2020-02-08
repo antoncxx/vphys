@@ -2,6 +2,7 @@
 
 #include "utils/utils.hpp"
 #include "gui/canvas.hpp"
+#include "gui/button.hpp"
 
 #include <windows.h>
 #include <windowsx.h>
@@ -17,12 +18,13 @@ class MainWindow : public NonCopybale, public NonMovable {
     bool isRegistered{ false };
     bool isCreated{ false };
 
-    Canvas* canvas;
+    Control* canvas;
+    Control* button;
 
     static inline const char* sClassName = "MAIN_WINDOW_CLASS";
     static LRESULT CALLBACK WindowProc(HWND, UINT, WPARAM, LPARAM);
 public:
-    explicit MainWindow(HINSTANCE handle, int width, int height, const std::string& title) noexcept;
+    explicit MainWindow(HINSTANCE handle, int width, int height) noexcept;
     ~MainWindow() noexcept;
 
     NODISCARD inline bool IsRegistered() const noexcept { return isRegistered; }

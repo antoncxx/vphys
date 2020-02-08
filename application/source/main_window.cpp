@@ -1,6 +1,6 @@
 #include "main_window.hpp"
 
-MainWindow::MainWindow(HINSTANCE handle, int width, int height, const std::string& title) noexcept 
+MainWindow::MainWindow(HINSTANCE handle, int width, int height) noexcept 
     : width(width), height(height), handle(handle) {
 
     isRegistered = RegisterMainClass();
@@ -61,12 +61,18 @@ void MainWindow::DestroyMainWindow() noexcept {
 
 void MainWindow::CreateControls() noexcept {
     canvas = new (std::nothrow) Canvas(hwnd, { 30, 30 }, { 100,100 });
+    button = new (std::nothrow) Button(hwnd, { 150, 30 }, { 100,100 });
 }
 
 void MainWindow::DestroyControls() noexcept {
     if (canvas != nullptr) {
         delete canvas;
         canvas = nullptr;
+    }
+
+    if (button != nullptr) {
+        delete button;
+        button = nullptr;
     }
 }
 

@@ -1,14 +1,14 @@
 #include "canvas.hpp"
 
 Canvas::Canvas(HWND parent, POINT position, SIZE size) noexcept 
-    : position(position), size(size) {
+    : Control(position, size) {
 
     isRegistered = RegisterCanvasClass();
-    isCreated    = CreateCanvasWindow(parent);
+    isCreated    = CreateControl(parent);
 }
 
 Canvas::~Canvas() noexcept {
-    DestroyCanvasWindow();
+    DestroyControl();
     UnregisterCanvasClass();
 }
 
@@ -34,7 +34,7 @@ bool Canvas::RegisterCanvasClass() const noexcept {
     return RegisterClass(&wc) != 0;
 }
 
-bool Canvas::CreateCanvasWindow(HWND parent) noexcept {
+bool Canvas::CreateControl(HWND parent) noexcept {
     if (IsRegistered()) {
         hwnd = CreateWindow(sClassName, NULL, WS_VISIBLE | WS_CHILD, position.x, position.y, size.cx, size.cy, parent, NULL, GetModuleHandle(NULL), this);
     }
@@ -47,13 +47,8 @@ void Canvas::UnregisterCanvasClass() noexcept {
     isRegistered = false;
 }
 
-void Canvas::DestroyCanvasWindow() noexcept {
-    if (hwnd) {
-        DestroyWindow(hwnd);
-        hwnd = NULL;
-    }
-
-    isCreated = false;
+void Canvas::DestroyControl() noexcept {
+    Control::DestroyControl();
 }
 
 LRESULT CALLBACK Canvas::CanvasProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
