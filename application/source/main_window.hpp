@@ -8,6 +8,12 @@
 #include <windowsx.h>
 
 #include <string>
+#include <memory>
+#include <list>
+
+using ControlPtr   = std::unique_ptr<Control>;
+using ControlsList = std::list<ControlPtr>;
+
 
 class MainWindow : public NonCopybale, public NonMovable { 
     HINSTANCE   handle;
@@ -18,8 +24,7 @@ class MainWindow : public NonCopybale, public NonMovable {
     bool isRegistered{ false };
     bool isCreated{ false };
 
-    Control* canvas;
-    Control* button;
+    ControlsList controls;
 
     static inline const char* sClassName = "MAIN_WINDOW_CLASS";
     static LRESULT CALLBACK WindowProc(HWND, UINT, WPARAM, LPARAM);

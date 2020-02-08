@@ -36,7 +36,7 @@ bool Canvas::RegisterCanvasClass() const noexcept {
 
 bool Canvas::CreateControl(HWND parent) noexcept {
     if (IsRegistered()) {
-        hwnd = CreateWindow(sClassName, NULL, WS_VISIBLE | WS_CHILD, position.x, position.y, size.cx, size.cy, parent, NULL, GetModuleHandle(NULL), this);
+        hwnd = CreateWindow(sClassName, NULL, WS_VISIBLE | WS_CHILD, position.x, position.y, size.cx, size.cy, parent, NULL, reinterpret_cast<HINSTANCE>(GetWindowLong(parent, GWL_HINSTANCE)), this);
     }
 
     return hwnd != NULL;

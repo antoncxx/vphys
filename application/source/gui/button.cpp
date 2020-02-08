@@ -13,7 +13,7 @@ Button::~Button() noexcept {
 
 NODISCARD bool Button::CreateControl(HWND parent) noexcept {
     if (IsRegistered()) {
-        hwnd = CreateWindow(sClassName, "okay", WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON, position.x, position.y, size.cx, size.cy, parent, NULL, (HINSTANCE)GetWindowLong(parent, GWL_HINSTANCE), NULL);
+        hwnd = CreateWindow(sClassName, "okay", WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON, position.x, position.y, size.cx, size.cy, parent, NULL, reinterpret_cast<HINSTANCE>(GetWindowLong(parent, GWL_HINSTANCE)), NULL);
     }
 
     return hwnd != NULL;

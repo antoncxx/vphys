@@ -60,20 +60,13 @@ void MainWindow::DestroyMainWindow() noexcept {
 }
 
 void MainWindow::CreateControls() noexcept {
-    canvas = new (std::nothrow) Canvas(hwnd, { 30, 30 }, { 100,100 });
-    button = new (std::nothrow) Button(hwnd, { 150, 30 }, { 100,100 });
+
+    controls.push_back(std::make_unique<Canvas>(hwnd, POINT{ 30, 30 }, SIZE{ 100,100 }));
+    controls.push_back(std::make_unique<Button>(hwnd, POINT{ 150, 30 }, SIZE{ 100,100 }));
 }
 
 void MainWindow::DestroyControls() noexcept {
-    if (canvas != nullptr) {
-        delete canvas;
-        canvas = nullptr;
-    }
-
-    if (button != nullptr) {
-        delete button;
-        button = nullptr;
-    }
+    controls.clear();
 }
 
 LRESULT CALLBACK MainWindow::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
