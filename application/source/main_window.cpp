@@ -30,9 +30,9 @@ bool MainWindow::RegisterMainClass() const noexcept {
         wc.cbWndExtra    = sizeof(LONG_PTR);
         wc.hbrBackground = (HBRUSH)(COLOR_BTNFACE + 1);
 
-        wc.hIcon         = NULL;
-        wc.hCursor       = NULL;
-        wc.lpszMenuName  = NULL;
+        wc.hIcon         = nullptr;
+        wc.hCursor       = nullptr;
+        wc.lpszMenuName  = nullptr;
     }
 
     return RegisterClass(&wc) != 0;
@@ -40,9 +40,9 @@ bool MainWindow::RegisterMainClass() const noexcept {
 
 bool MainWindow::CreateMainWindow() noexcept {
     if (IsRegistered()) {
-        hwnd = CreateWindow(sClassName, NULL, WS_VISIBLE | WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, width, height, NULL, NULL, handle, this);
+        hwnd = CreateWindow(sClassName, nullptr, WS_VISIBLE | WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, width, height, nullptr, nullptr, handle, this);
     }
-    return hwnd != NULL;
+    return hwnd != nullptr;
 }
 
 void MainWindow::UnregisterMainClass() noexcept {
@@ -53,7 +53,7 @@ void MainWindow::UnregisterMainClass() noexcept {
 void MainWindow::DestroyMainWindow() noexcept {
     if (hwnd) {
         DestroyWindow(hwnd);
-        hwnd = NULL;
+        hwnd = nullptr;
     }
 
     isCreated = false;

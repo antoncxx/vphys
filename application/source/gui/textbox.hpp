@@ -2,7 +2,7 @@
 
 #include "control.hpp"
 
-class Textbox : public Control {
+class Textbox final : public Control {
     static inline const char* sClassName = "Edit";
 public:
     Textbox(HWND parent, POINT position, SIZE size) noexcept;

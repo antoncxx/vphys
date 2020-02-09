@@ -8,7 +8,7 @@ D2Context::~D2Context() noexcept {
 }
 
 bool D2Context::Initialize(HWND hwnd) noexcept {
-    if (hwnd == NULL) {
+    if (hwnd == nullptr) {
         return false;
     }
 

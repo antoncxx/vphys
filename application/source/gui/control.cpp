@@ -8,7 +8,7 @@ Control::Control(POINT position, SIZE size) noexcept
 void Control::DestroyControl() noexcept {
     if (hwnd) {
         DestroyWindow(hwnd);
-        hwnd = NULL;
+        hwnd = nullptr;
     }
 
     isCreated = false;

@@ -16,9 +16,9 @@ bool Canvas::RegisterCanvasClass() const noexcept {
     WNDCLASS wc;
     memset(&wc, 0, sizeof(wc));
 
-    if (!GetClassInfo(GetModuleHandle(NULL), sClassName, &wc)) {
+    if (!GetClassInfo(GetModuleHandle(nullptr), sClassName, &wc)) {
         wc.style         = 0;
-        wc.hInstance     = GetModuleHandle(NULL);
+        wc.hInstance     = GetModuleHandle(nullptr);
         wc.lpszClassName = sClassName;
         wc.lpfnWndProc   = CanvasProc;
 
@@ -26,9 +26,9 @@ bool Canvas::RegisterCanvasClass() const noexcept {
         wc.cbWndExtra    = sizeof(LONG_PTR);
         wc.hbrBackground = (HBRUSH)(COLOR_BTNFACE + 1);
 
-        wc.hIcon         = NULL;
-        wc.hCursor       = NULL;
-        wc.lpszMenuName  = NULL;
+        wc.hIcon         = nullptr;
+        wc.hCursor       = nullptr;
+        wc.lpszMenuName  = nullptr;
     }
 
     return RegisterClass(&wc) != 0;
@@ -36,7 +36,7 @@ bool Canvas::RegisterCanvasClass() const noexcept {
 
 bool Canvas::CreateControl(HWND parent) noexcept {
     if (RegisterCanvasClass()) {
-        hwnd = CreateWindow(sClassName, NULL, WS_VISIBLE | WS_CHILD, position.x, position.y, size.cx, size.cy, parent, NULL, reinterpret_cast<HINSTANCE>(GetWindowLong(parent, GWL_HINSTANCE)), this);
+        hwnd = CreateWindow(sClassName, nullptr, WS_VISIBLE | WS_CHILD, position.x, position.y, size.cx, size.cy, parent, nullptr, reinterpret_cast<HINSTANCE>(GetWindowLong(parent, GWL_HINSTANCE)), this);
     }
 
     return hwnd != NULL;

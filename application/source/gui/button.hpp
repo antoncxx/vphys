@@ -5,7 +5,7 @@
 
 #include <Windows.h>
 
-class Button : public Control {
+class Button final : public Control {
     std::string text;
     int         id;
 

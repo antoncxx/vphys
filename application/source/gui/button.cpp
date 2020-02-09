@@ -13,8 +13,8 @@ Button::~Button() noexcept {
 }
 
 NODISCARD bool Button::CreateControl(HWND parent) noexcept {
-    hwnd = CreateWindow(sClassName, text.c_str(), WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON, position.x, position.y, size.cx, size.cy, parent, reinterpret_cast<HMENU>(id), reinterpret_cast<HINSTANCE>(GetWindowLong(parent, GWL_HINSTANCE)), NULL);
-    return hwnd != NULL;
+    hwnd = CreateWindow(sClassName, text.c_str(), WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON, position.x, position.y, size.cx, size.cy, parent, reinterpret_cast<HMENU>(id), reinterpret_cast<HINSTANCE>(GetWindowLong(parent, GWL_HINSTANCE)), nullptr);
+    return hwnd != nullptr;
 }
 
 void Button::DestroyControl() noexcept {

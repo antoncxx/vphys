@@ -2,7 +2,7 @@
 
 #include "control.hpp"
 
-class Label : public Control {
+class Label final : public Control {
     std::string text;
 
     static inline const char* sClassName = "Static";

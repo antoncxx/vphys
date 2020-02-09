@@ -5,7 +5,7 @@ int Application::Run(HINSTANCE hInstance, LPSTR lpCmdLine, int nCmdShow) noexcep
     UNUSEDPARAM(lpCmdLine);
     UNUSEDPARAM(nCmdShow);
 
-    MainWindow mainWindow(hInstance, 400, 300);
+    MainWindow mainWindow(hInstance, 640, 480);
 
     if (!mainWindow.IsRegistered()) {
         MessageBox(NULL, "Failed to register main window class.", "Error", MB_OK);
