@@ -66,12 +66,18 @@ void MainWindow::CreateControls() noexcept {
 
     buttonStop = new Button(hwnd, { 300,150 }, { 100,40 }, 168, "Stop");
     buttonStop->SetCallback(std::bind(&MainWindow::OnButtonStopPushed, this));
+
+    textbox = new Textbox(hwnd, { 10,250 }, { 100 ,20 });
+
+    label = new Label(hwnd, { 300,250 }, { 150 ,20 }, "this is a label");
 }
 
 void MainWindow::DestroyControls() noexcept {
     delete renderer;
     delete buttonStart;
     delete buttonStop;
+    delete textbox;
+    delete label;
 }
 
 bool MainWindow::CheckControls() const noexcept {

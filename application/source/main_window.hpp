@@ -3,6 +3,8 @@
 #include "utils/utils.hpp"
 #include "gui/canvas.hpp"
 #include "gui/button.hpp"
+#include "gui/textbox.hpp"
+#include "gui/label.hpp"
 
 #include <windows.h>
 #include <windowsx.h>
@@ -23,6 +25,9 @@ class MainWindow : public NonCopyable, public NonMovable {
     IRenderer* renderer;
     Button* buttonStart;
     Button* buttonStop;
+    Textbox* textbox;
+    Label* label;
+
     static inline const char* sClassName = "MAIN_WINDOW_CLASS";
     static LRESULT CALLBACK WindowProc(HWND, UINT, WPARAM, LPARAM);
 public:
