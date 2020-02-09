@@ -31,10 +31,7 @@ LRESULT CALLBACK Button::ButtonSubclassProc(HWND hwnd, UINT uMsg, WPARAM wParam,
 
     auto button = reinterpret_cast<Button*>(refData);
 
-    // TODO : fix wrong refData
-    if (uMsg == WM_COMMAND) {
-        MessageBox(0, std::to_string(id).c_str(), 0, 0);
-    
+    if (uMsg == WM_COMMAND) {    
         button->Invoke();
         return TRUE;
     }

@@ -18,7 +18,7 @@ MainWindow::~MainWindow() noexcept {
 
 bool MainWindow::RegisterMainClass() const noexcept {
     WNDCLASS wc;
-    memset(&wc, 0, sizeof(WNDCLASSA));
+    memset(&wc, 0, sizeof(WNDCLASS));
 
     if (!GetClassInfo(handle, sClassName, &wc)) {
         wc.style         = 0;
