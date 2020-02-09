@@ -21,7 +21,8 @@ class MainWindow : public NonCopyable, public NonMovable {
     bool isCreated{ false };
 
     IRenderer* renderer;
-    Control* button;
+    Button* buttonStart;
+    Button* buttonStop;
     static inline const char* sClassName = "MAIN_WINDOW_CLASS";
     static LRESULT CALLBACK WindowProc(HWND, UINT, WPARAM, LPARAM);
 public:
@@ -46,4 +47,7 @@ private:
 
     void CreateControls() noexcept;
     void DestroyControls() noexcept;
+
+    void OnButtonStartPushed();
+    void OnButtonStopPushed();
 };

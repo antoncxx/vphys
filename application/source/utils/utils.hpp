@@ -1,5 +1,8 @@
 #pragma once
 
+#include <functional>
+#include <string>
+
 #define NODISCARD    [[nodiscard]]
 #define FALLTHROUGH  [[fallthrough]]
 

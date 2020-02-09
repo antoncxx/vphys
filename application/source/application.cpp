@@ -26,7 +26,7 @@ int Application::Run(HINSTANCE hInstance, LPSTR lpCmdLine, int nCmdShow) noexcep
     memset(&message, 0, sizeof(MSG));
 
     while (true) {
-        if (PeekMessage(&message, 0, 0, 0, PM_REMOVE)) {
+        if (PeekMessage(&message, 0, 0, 0, PM_REMOVE) != 0) {
             if (message.message == WM_QUIT) {
                 break;
             }
@@ -34,16 +34,10 @@ int Application::Run(HINSTANCE hInstance, LPSTR lpCmdLine, int nCmdShow) noexcep
             TranslateMessage(&message);
             DispatchMessage(&message);
         } else {
+            // TODO: update window according to timer
             mainWindow.Update();
         }
     }
-
-    //while (GetMessage(&message, NULL, 0, 0)) {
-    //    TranslateMessage(&message);
-    //    DispatchMessage(&message);
-    //
-    //    mainWindow.Update();
-    //}
 
     return static_cast<int>(message.wParam);
 }

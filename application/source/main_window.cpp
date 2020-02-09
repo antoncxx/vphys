@@ -60,13 +60,18 @@ void MainWindow::DestroyMainWindow() noexcept {
 }
 
 void MainWindow::CreateControls() noexcept {
-    this->renderer = new Canvas(hwnd, { 10,10 }, { 100,100 });
-    button = new Button(hwnd, { 150,50 }, { 100,40 });
+    this->renderer = new Canvas(hwnd, { 10,10 }, { 200,200 });
+    buttonStart = new Button(hwnd, { 300,50 }, { 100,40 }, 145, "Start");
+    buttonStart->SetCallback(std::bind(&MainWindow::OnButtonStartPushed, this));
+
+    buttonStop = new Button(hwnd, { 300,150 }, { 100,40 }, 168, "Stop");
+    buttonStop->SetCallback(std::bind(&MainWindow::OnButtonStopPushed, this));
 }
 
 void MainWindow::DestroyControls() noexcept {
     delete renderer;
-    delete button;
+    delete buttonStart;
+    delete buttonStop;
 }
 
 bool MainWindow::CheckControls() const noexcept {
@@ -76,6 +81,14 @@ bool MainWindow::CheckControls() const noexcept {
 
 void MainWindow::Update() noexcept {
     renderer->Redraw();
+}
+
+void MainWindow::OnButtonStartPushed() {
+    MessageBox(0, "Start", 0, 0);
+}
+
+void MainWindow::OnButtonStopPushed() {
+    MessageBox(0, "Stop", 0, 0);
 }
 
 LRESULT CALLBACK MainWindow::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
@@ -94,6 +107,10 @@ LRESULT CALLBACK MainWindow::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
     case WM_DESTROY: {
         PostQuitMessage(0);
         return 0;
+    }
+
+    case WM_COMMAND: {
+        return SendMessage(reinterpret_cast<HWND>(lParam), WM_COMMAND, wParam, lParam);
     }
 
     default:
