@@ -12,7 +12,7 @@ Textbox::~Textbox() noexcept {
 
 
 bool Textbox::CreateControl(HWND parent) noexcept {
-    hwnd = CreateWindow(sClassName, nullptr, WS_CHILD | WS_VISIBLE | WS_TABSTOP | WS_BORDER | ES_LEFT | ES_AUTOHSCROLL, position.x, position.y, size.cx, size.cy, parent, nullptr, reinterpret_cast<HINSTANCE>(GetWindowLong(parent, GWL_HINSTANCE)), nullptr);
+    hwnd = CreateWindow(sClassName, nullptr, WS_CHILD | WS_VISIBLE | WS_TABSTOP | WS_BORDER | ES_LEFT | ES_AUTOHSCROLL, position.x, position.y, size.cx, size.cy, parent, nullptr, reinterpret_cast<HINSTANCE>(GetWindowLongPtr(parent, GWLP_HINSTANCE)), nullptr);
     return hwnd != nullptr;
 }
 

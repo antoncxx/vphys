@@ -6,8 +6,8 @@
 #include <Windows.h>
 
 class Button final : public Control {
-    std::string text;
-    int         id;
+    std::string  text;
+    std::int64_t id;
 
     std::function<void(void)> callback{};
 
@@ -18,7 +18,7 @@ public:
     virtual ~Button() noexcept;
 
     inline void SetCallback(const std::function<void(void)>& callback) noexcept { this->callback = callback; }
-    NODISCARD inline int GetId() const noexcept { return id; }
+    NODISCARD inline std::int64_t GetId() const noexcept { return id; }
 private:
     NODISCARD bool CreateControl(HWND) noexcept override;
     void DestroyControl() noexcept override;

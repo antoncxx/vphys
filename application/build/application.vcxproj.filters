@@ -10,6 +10,12 @@
     <Filter Include="source\gui">
       <UniqueIdentifier>{2cfb6784-e885-4891-9e4a-3228ef053f19}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\math">
+      <UniqueIdentifier>{2c48195e-eb48-4b20-9b0c-fdc022a52f56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\test">
+      <UniqueIdentifier>{d5935ecf-34ab-4710-84f5-fd897c2cdc05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\source\application.cpp">
@@ -42,6 +48,15 @@
     <ClCompile Include="..\source\gui\textbox.cpp">
       <Filter>source\gui</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\math\math.cpp">
+      <Filter>source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\test\test_math.cpp">
+      <Filter>source\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\test\test_pool.cpp">
+      <Filter>source\test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\application.hpp">
@@ -73,6 +88,12 @@
     </ClInclude>
     <ClInclude Include="..\source\gui\textbox.hpp">
       <Filter>source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\math\math.hpp">
+      <Filter>source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\utils\thread_pool.hpp">
+      <Filter>source\utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

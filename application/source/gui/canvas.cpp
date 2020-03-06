@@ -36,7 +36,7 @@ bool Canvas::RegisterCanvasClass() const noexcept {
 
 bool Canvas::CreateControl(HWND parent) noexcept {
     if (RegisterCanvasClass()) {
-        hwnd = CreateWindow(sClassName, nullptr, WS_VISIBLE | WS_CHILD, position.x, position.y, size.cx, size.cy, parent, nullptr, reinterpret_cast<HINSTANCE>(GetWindowLong(parent, GWL_HINSTANCE)), this);
+        hwnd = CreateWindow(sClassName, nullptr, WS_VISIBLE | WS_CHILD, position.x, position.y, size.cx, size.cy, parent, nullptr, reinterpret_cast<HINSTANCE>(GetWindowLongPtr(parent, GWLP_HINSTANCE)), this);
     }
 
     return hwnd != NULL;
@@ -62,11 +62,11 @@ void Canvas::Redraw() noexcept {
 LRESULT CALLBACK Canvas::CanvasProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     if (uMsg == WM_NCCREATE) {
         Canvas* canvas = reinterpret_cast<Canvas*>(lParam);
-        SetWindowLongPtr(hwnd, GWL_USERDATA, reinterpret_cast<LONG_PTR>(canvas));
+        SetWindowLongPtr(hwnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(canvas));
         return TRUE;
     }
 
-    auto canvas = reinterpret_cast<Canvas*>(GetWindowLongPtr(hwnd, GWL_USERDATA));
+    auto canvas = reinterpret_cast<Canvas*>(GetWindowLongPtr(hwnd, GWLP_USERDATA));
     if (canvas == nullptr) {
         return FALSE;
     }

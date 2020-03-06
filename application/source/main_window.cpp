@@ -100,11 +100,11 @@ void MainWindow::OnButtonStopPushed() {
 LRESULT CALLBACK MainWindow::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     if (uMsg == WM_NCCREATE) {
         MainWindow* window = reinterpret_cast<MainWindow*>(lParam);
-        SetWindowLongPtr(hwnd, GWL_USERDATA, reinterpret_cast<LONG_PTR>(window));
+        SetWindowLongPtr(hwnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(window));
         return TRUE;
     }
 
-    auto window = reinterpret_cast<MainWindow*>(GetWindowLongPtr(hwnd, GWL_USERDATA));
+    auto window = reinterpret_cast<MainWindow*>(GetWindowLongPtr(hwnd, GWLP_USERDATA));
     if (window == nullptr) { 
         return FALSE; 
     }

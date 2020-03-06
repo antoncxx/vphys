@@ -12,7 +12,7 @@ Label::~Label() noexcept {
 
 
 bool Label::CreateControl(HWND parent) noexcept {
-    hwnd = CreateWindow(sClassName, text.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP , position.x, position.y, size.cx, size.cy, parent, nullptr, reinterpret_cast<HINSTANCE>(GetWindowLong(parent, GWL_HINSTANCE)), nullptr);
+    hwnd = CreateWindow(sClassName, text.c_str(), WS_CHILD | WS_VISIBLE | WS_TABSTOP , position.x, position.y, size.cx, size.cy, parent, nullptr, reinterpret_cast<HINSTANCE>(GetWindowLongPtr(parent, GWLP_HINSTANCE)), nullptr);
     return hwnd != nullptr;
 }
 
