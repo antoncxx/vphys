@@ -23,4 +23,6 @@ namespace Math {
         }
         return result;
     }
+
+    DataVector SolveEquasions(DataMatrix& coefficients, DataVector& values, std::size_t size, Real epsilon = Real(1e-2));
 }
