@@ -57,6 +57,12 @@
     <ClCompile Include="..\source\test\test_pool.cpp">
       <Filter>source\test</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\math\heat_capacity.cpp">
+      <Filter>source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\test\test_heat_capacity.cpp">
+      <Filter>source\test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\application.hpp">
@@ -94,6 +100,9 @@
     </ClInclude>
     <ClInclude Include="..\source\utils\thread_pool.hpp">
       <Filter>source\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\math\heat_capacity.hpp">
+      <Filter>source\math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

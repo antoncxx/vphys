@@ -153,7 +153,14 @@
     <ClCompile Include="..\source\gui\d2dcotext.cpp" />
     <ClCompile Include="..\source\gui\label.cpp" />
     <ClCompile Include="..\source\gui\textbox.cpp" />
+    <ClCompile Include="..\source\math\heat_capacity.cpp" />
     <ClCompile Include="..\source\math\math.cpp" />
+    <ClCompile Include="..\source\test\test_heat_capacity.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\source\test\test_math.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -185,6 +192,7 @@
     <ClInclude Include="..\source\gui\label.hpp" />
     <ClInclude Include="..\source\gui\textbox.hpp" />
     <ClInclude Include="..\source\main_window.hpp" />
+    <ClInclude Include="..\source\math\heat_capacity.hpp" />
     <ClInclude Include="..\source\math\math.hpp" />
     <ClInclude Include="..\source\utils\thread_pool.hpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
