@@ -8,14 +8,19 @@ int main(void) {
 
 
     Math::HeatCapacity c1 = [](auto t) {
-        return exp(2*t);
+        return 2* sin(t * 3.1415);
     };
 
     Math::HeatCapacity c2 = [](auto t) {
-        return 4*sin(t);
+        return exp(-t*2);
     };
+    auto start = std::chrono::high_resolution_clock::now();
+    Math::HeatCapacitySmoother smoother(c1, c2, 1, 1, 0.2, Math::PARABOLIC);
+    auto end = std::chrono::high_resolution_clock::now();
 
-    Math::HeatCapacitySmoother smoother(c1, c2, 1, 1, 0.2, Math::LINEAR);
+    std::cout << "Execution time : "
+        << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()
+        << std::endl;
 
     Math::DataVector vector;
 
@@ -25,11 +30,11 @@ int main(void) {
     }
 
 
-    //std::ofstream file;
-    //file.open("M:/linear1.txt", std::ios::out);
-    //for (auto x : vector) {
-    //    file << x << " ";
-    //}
-    //file.close();
+    std::ofstream file;
+    file.open("M:/linear1.txt", std::ios::out);
+    for (auto x : vector) {
+        file << x << " ";
+    }
+    file.close();
     system("pause");
 }

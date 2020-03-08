@@ -12,13 +12,16 @@ namespace Math {
     Real HeatCapacitySmoother::GetValue(Real temperature) const noexcept {
         if (temperature < phaseTransitionTemperature - delta) {
             return c1(temperature);
-        } else if (temperature <= phaseTransitionTemperature) {
+        }
+        else if (temperature <= phaseTransitionTemperature) {
             return c1Approximated(temperature);
-        } else if (temperature < phaseTransitionTemperature + delta) {
+        }
+        else if (temperature < phaseTransitionTemperature + delta) {
             return c2Approximated(temperature);
-        } else {
+        }
+        else {
             return c2(temperature);
-        }       
+        }
     }
 
     void HeatCapacitySmoother::approximate() {
@@ -54,7 +57,49 @@ namespace Math {
     }
 
     void HeatCapacitySmoother::approximateParabolic() noexcept {
+        auto c1Integrated = Integrate(c1, phaseTransitionTemperature - delta, phaseTransitionTemperature, delta / INTEGRATION_STEPS_NUMBER);
+        auto c2Integrated = Integrate(c2, phaseTransitionTemperature, phaseTransitionTemperature + delta, delta / INTEGRATION_STEPS_NUMBER);
 
+        const auto pow2 = [](auto x) -> Real { return x * x; };
+        const auto pow3 = [](auto x) -> Real { return x * x * x; };
+
+        DataMatrix coefficients =
+        {
+            {                                         pow2(phaseTransitionTemperature - delta),                                                phaseTransitionTemperature - delta,     1,                                                                                  0,                                                                                  0,     0},
+            {                                                                                0,                                                                                 0,     0,                                           pow2(phaseTransitionTemperature + delta),                                                 phaseTransitionTemperature + delta,     1},
+            {                                                 pow2(phaseTransitionTemperature),                                                        phaseTransitionTemperature,     1,                                                  -pow2(phaseTransitionTemperature),                                                        -phaseTransitionTemperature,    -1},
+            {                                                   2 * phaseTransitionTemperature,                                                                                 1,     0,                                                                                  0,                                                                                  0,     0},
+            {                                                                                0,                                                                                 0,     0,                                               2 * pow2(phaseTransitionTemperature),                                                                                  1,     0},
+            {(pow3(phaseTransitionTemperature) - pow3(phaseTransitionTemperature - delta)) / 3, (pow2(phaseTransitionTemperature) - pow2(phaseTransitionTemperature - delta)) / 2, delta, (-pow3(phaseTransitionTemperature) + pow3(phaseTransitionTemperature + delta)) / 3, (-pow2(phaseTransitionTemperature) + pow2(phaseTransitionTemperature + delta)) / 2, delta},
+        };
+
+        DataVector values =
+        {
+            c1(phaseTransitionTemperature - delta),
+            c2(phaseTransitionTemperature + delta),
+            0,
+            0,
+            0,
+            enthalpy + (c1Integrated + c2Integrated),
+        };
+
+        auto x = SolveEquasions(coefficients, values, 6);
+
+        Real a1 = x[0];
+        Real b1 = x[1];
+        Real d1 = x[2];
+
+        c1Approximated = [=](auto t) -> Real {
+            return a1 * pow2(t) + b1 * t + d1;
+        };
+
+        Real a2 = x[3];
+        Real b2 = x[4];
+        Real d2 = x[5];
+
+        c2Approximated = [=](auto t) -> Real {
+            return a2 * pow2(t) + b2 * t + d2;
+        };
     }
 
 }

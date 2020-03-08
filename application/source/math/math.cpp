@@ -32,7 +32,7 @@ namespace Math {
                 throw std::logic_error("The solution cannot be obtained because of the null column");
             }
 
-            for (std::size_t j = 0; j < size; j++) {
+            for (std::size_t j = 0; j < size; ++j) {
                 std::swap(coefficients[k][j], coefficients[index][j]);
             }
 
@@ -64,7 +64,7 @@ namespace Math {
         }
 
 
-        for (std::int16_t i = size ; i-- > 0;) {
+        for (std::size_t i = size ; i-- > 0;) {
             x[i] = values[i];
 
             for (std::size_t j = 0; j < i; ++j) {
