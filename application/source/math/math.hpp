@@ -14,6 +14,13 @@ namespace Math {
     DataMatrix MakeDataMatrix(std::size_t xSize, std::size_t ySize, Real defaulValue = Real());
     DataCube   MakeDataCube(std::size_t xSize, std::size_t ySize, std::size_t zSize, Real defaulValue = Real());
 
+
+    enum SmoothOption {
+        LINEAR     = 1 << 3,
+        PARABOLIC  = 1 << 4,
+        POLYNOMIAL = 1 << 5 //TODO
+    };
+
     template<class F, class T>
     auto Integrate(F&& func, T a, T b, T step) {
         auto steps = static_cast<std::uint64_t>((b - a) / step);

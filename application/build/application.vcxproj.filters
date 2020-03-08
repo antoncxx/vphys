@@ -60,11 +60,11 @@
     <ClCompile Include="..\source\math\heat_capacity.cpp">
       <Filter>source\math</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\test\test_heat_capacity.cpp">
-      <Filter>source\test</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\test\test_gauss.cpp">
       <Filter>source\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\math\heat_conductivity.cpp">
+      <Filter>source\math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +105,9 @@
       <Filter>source\utils</Filter>
     </ClInclude>
     <ClInclude Include="..\source\math\heat_capacity.hpp">
+      <Filter>source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\math\heat_conductivity.hpp">
       <Filter>source\math</Filter>
     </ClInclude>
   </ItemGroup>

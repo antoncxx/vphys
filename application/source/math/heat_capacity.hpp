@@ -9,10 +9,6 @@ namespace Math {
 
 	using HeatCapacity = std::function<Real(Real)>;
 
-	enum SmoothOption {
-		LINEAR,
-		PARABOLIC
-	};
 
 	class HeatCapacitySmoother {
 		HeatCapacity c1;
@@ -30,7 +26,6 @@ namespace Math {
 	public:
 		explicit HeatCapacitySmoother(HeatCapacity c1, HeatCapacity c2, Real phaseTransitionTemperature, Real enthalpy, Real delta, SmoothOption option);
 		~HeatCapacitySmoother() = default;
-		HeatCapacitySmoother() = delete;
 
 		Real GetValue(Real temperature) const noexcept;
 
