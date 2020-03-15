@@ -39,25 +39,35 @@ bool Canvas::CreateControl(HWND parent) noexcept {
         hwnd = CreateWindow(sClassName, nullptr, WS_VISIBLE | WS_CHILD, position.x, position.y, size.cx, size.cy, parent, nullptr, reinterpret_cast<HINSTANCE>(GetWindowLongPtr(parent, GWLP_HINSTANCE)), this);
     }
 
-    return hwnd != NULL;
+    return hwnd != nullptr;
 }
 
 void Canvas::UnregisterCanvasClass() noexcept {
-    UnregisterClass(sClassName, GetModuleHandle(NULL));
+    UnregisterClass(sClassName, GetModuleHandle(nullptr));
 }
 
 void Canvas::DestroyControl() noexcept {
     Control::DestroyControl();
 }
 
-void Canvas::Redraw() noexcept {
-    auto rt = d2Context.GetRenderTarget();
+void Canvas::Begin() {
+    auto renderTarget = d2Context.GetRenderTarget();
 
-    rt->BeginDraw();
-    rt->Clear(D2D1::ColorF(D2D1::ColorF::Green));
-    // add drawing code here
-    rt->EndDraw();
+    renderTarget->BeginDraw();
+    renderTarget->Clear(D2D1::ColorF(D2D1::ColorF::Yellow));
 }
+
+void Canvas::End() {
+    auto renderTarget = d2Context.GetRenderTarget();
+
+    renderTarget->EndDraw();
+}
+
+void Canvas::DrawRectangle(const D2D1_RECT_F& rectangle, D2D1::ColorF color) {
+    d2Context.SetBrushColor(color);
+    d2Context.GetRenderTarget()->FillRectangle(rectangle, d2Context.GetBrush());
+}
+
 
 LRESULT CALLBACK Canvas::CanvasProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     if (uMsg == WM_NCCREATE) {

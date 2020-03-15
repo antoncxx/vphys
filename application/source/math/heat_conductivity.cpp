@@ -21,7 +21,7 @@ namespace Math {
         }
     }
 
-    void HeatConductivitySmoother::approximateLinear() noexcept {
+    void HeatConductivitySmoother::approximateLinear() {
         auto k1Border = k1(phaseTransitionTemperature - delta);
         auto k2Border = k2(phaseTransitionTemperature + delta);
 
@@ -31,7 +31,7 @@ namespace Math {
 
     }
 
-    void HeatConductivitySmoother::approximatePolynomial() noexcept {
+    void HeatConductivitySmoother::approximatePolynomial() {
         throw std::runtime_error("Not implemented!");
     }
 

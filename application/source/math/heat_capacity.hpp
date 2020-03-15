@@ -2,8 +2,8 @@
 
 #include <functional>
 
-#include "../utils/utils.hpp"
 #include "math.hpp"
+#include "../utils/utils.hpp"
 
 namespace Math {
 
@@ -27,12 +27,12 @@ namespace Math {
 		explicit HeatCapacitySmoother(HeatCapacity c1, HeatCapacity c2, Real phaseTransitionTemperature, Real enthalpy, Real delta, SmoothOption option);
 		~HeatCapacitySmoother() = default;
 
-		Real GetValue(Real temperature) const noexcept;
+		NODISCARD Real GetValue(Real temperature) const noexcept;
 
 	private:
 		void approximate();
-		void approximateLinear()    noexcept;
-		void approximateParabolic() noexcept;
+		void approximateLinear();
+		void approximateParabolic();
 
 	};
     

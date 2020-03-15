@@ -81,12 +81,20 @@ void MainWindow::DestroyControls() noexcept {
 }
 
 bool MainWindow::CheckControls() const noexcept {
-
+    // todo: check all the controls
     return renderer != 0;
 }
 
 void MainWindow::Update() noexcept {
-    renderer->Redraw();
+    renderer->Begin();
+
+    for (int i = 0; i < 10; ++i) {
+        for (int j = 0; j < 10; ++j) {
+            renderer->DrawRectangle({ (FLOAT)i,(FLOAT)j,(FLOAT)(i+1),(FLOAT)(j+1) }, D2D1::ColorF(i / 10.f, j/10.f, (i + j)/20.f));
+        }
+    }
+
+    renderer->End();
 }
 
 void MainWindow::OnButtonStartPushed() {

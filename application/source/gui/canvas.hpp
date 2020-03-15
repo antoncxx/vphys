@@ -15,7 +15,9 @@ public:
     Canvas(HWND parent, POINT position, SIZE size) noexcept;
     virtual ~Canvas() noexcept;
 
-    void Redraw() noexcept override;
+    void Begin() override;
+    void End() override;
+    void DrawRectangle(const D2D1_RECT_F& rectangle, D2D1::ColorF color) override;
 
 private:
     NODISCARD bool RegisterCanvasClass() const noexcept;

@@ -38,7 +38,7 @@ namespace Math {
         }
     }
 
-    void HeatCapacitySmoother::approximateLinear() noexcept {
+    void HeatCapacitySmoother::approximateLinear() {
         auto c1Integrated = Integrate(c1, phaseTransitionTemperature - delta, phaseTransitionTemperature, delta / INTEGRATION_STEPS_NUMBER);
         auto c2Integrated = Integrate(c2, phaseTransitionTemperature, phaseTransitionTemperature + delta, delta / INTEGRATION_STEPS_NUMBER);
 
@@ -56,7 +56,7 @@ namespace Math {
         };
     }
 
-    void HeatCapacitySmoother::approximateParabolic() noexcept {
+    void HeatCapacitySmoother::approximateParabolic() {
         auto c1Integrated = Integrate(c1, phaseTransitionTemperature - delta, phaseTransitionTemperature, delta / INTEGRATION_STEPS_NUMBER);
         auto c2Integrated = Integrate(c2, phaseTransitionTemperature, phaseTransitionTemperature + delta, delta / INTEGRATION_STEPS_NUMBER);
 

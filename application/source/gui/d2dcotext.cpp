@@ -17,11 +17,27 @@ bool D2Context::Initialize(HWND hwnd) noexcept {
         return false;
     }
 
-    factory->CreateHwndRenderTarget(D2D1::RenderTargetProperties(), D2D1::HwndRenderTargetProperties(hwnd, D2D1::SizeU(500, 500)), &renderTarget);
-    return renderTarget != nullptr;
+    factory->CreateHwndRenderTarget(D2D1::RenderTargetProperties(), D2D1::HwndRenderTargetProperties(hwnd, D2D1::SizeU(10, 10)), &renderTarget);
+
+    if (renderTarget == nullptr) {
+        return false;
+    }
+
+    renderTarget->CreateSolidColorBrush(D2D1::ColorF(D2D1::ColorF::Blue), &colorBrush);
+
+    if (colorBrush == nullptr) {
+        return false;
+    }
+
+    return true;
 }
 
 void D2Context::Finalize() noexcept {
+    
+    if (colorBrush != nullptr) {
+        colorBrush->Release();
+    }
+
     if (renderTarget != nullptr) {
         renderTarget->Release();
     }
@@ -29,4 +45,8 @@ void D2Context::Finalize() noexcept {
     if (factory != nullptr) {
         factory->Release();
     }
+}
+
+void D2Context::SetBrushColor(const D2D1::ColorF& color) {
+    colorBrush->SetColor(color);
 }

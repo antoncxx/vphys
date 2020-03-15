@@ -1,6 +1,8 @@
 #pragma once 
 
 #include "math.hpp"
+#include "../utils/utils.hpp"
+
 #include <functional>
 
 namespace Math {
@@ -23,12 +25,12 @@ namespace Math {
         explicit HeatConductivitySmoother(HeatConductivity k1, HeatConductivity k2, Real phaseTransitionTemperature, Real delta, SmoothOption option);
         ~HeatConductivitySmoother() = default;
 
-        Real GetValue(Real temperature) const noexcept;
+        NODISCARD Real GetValue(Real temperature) const noexcept;
 
     private:
         void approximate();
-        void approximateLinear()     noexcept;
-        void approximatePolynomial() noexcept;
+        void approximateLinear();
+        void approximatePolynomial();
     };
 
 
