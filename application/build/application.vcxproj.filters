@@ -66,6 +66,9 @@
     <ClCompile Include="..\source\math\heat_conductivity.cpp">
       <Filter>source\math</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\test\2d_stefan.cpp">
+      <Filter>source\test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\application.hpp">
