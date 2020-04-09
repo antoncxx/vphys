@@ -92,7 +92,7 @@
     <Link>
       <SubSystem>NotSet</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d2d1.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -106,7 +106,7 @@
     <Link>
       <SubSystem>NotSet</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d2d1.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -124,7 +124,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d2d1.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -142,20 +142,15 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d2d1.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\source\application.cpp" />
-    <ClCompile Include="..\source\gui\button.cpp" />
-    <ClCompile Include="..\source\gui\canvas.cpp" />
-    <ClCompile Include="..\source\gui\control.cpp" />
-    <ClCompile Include="..\source\gui\d2dcotext.cpp" />
-    <ClCompile Include="..\source\gui\label.cpp" />
-    <ClCompile Include="..\source\gui\textbox.cpp" />
+    <ClCompile Include="..\source\main.cpp" />
     <ClCompile Include="..\source\math\heat_capacity.cpp" />
     <ClCompile Include="..\source\math\heat_conductivity.cpp" />
     <ClCompile Include="..\source\math\math.cpp" />
+    <ClCompile Include="..\source\math\stefan_problem_solver.cpp" />
     <ClCompile Include="..\source\test\2d_stefan.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -180,28 +175,13 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\source\winmain.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\source\main_window.cpp" />
     <ClCompile Include="..\source\utils\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\source\application.hpp" />
-    <ClInclude Include="..\source\gui\button.hpp" />
-    <ClInclude Include="..\source\gui\canvas.hpp" />
-    <ClInclude Include="..\source\gui\control.hpp" />
-    <ClInclude Include="..\source\gui\d2dcotext.hpp" />
-    <ClInclude Include="..\source\gui\irenderer.hpp" />
-    <ClInclude Include="..\source\gui\label.hpp" />
-    <ClInclude Include="..\source\gui\textbox.hpp" />
-    <ClInclude Include="..\source\main_window.hpp" />
     <ClInclude Include="..\source\math\heat_capacity.hpp" />
     <ClInclude Include="..\source\math\heat_conductivity.hpp" />
     <ClInclude Include="..\source\math\math.hpp" />
+    <ClInclude Include="..\source\math\stefan_problem_solver.h" />
     <ClInclude Include="..\source\utils\thread_pool.hpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>

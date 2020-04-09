@@ -7,9 +7,6 @@
     <Filter Include="source\utils">
       <UniqueIdentifier>{a131e6ba-0a40-4bad-bf3c-8efc2e7c5517}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\gui">
-      <UniqueIdentifier>{2cfb6784-e885-4891-9e4a-3228ef053f19}</UniqueIdentifier>
-    </Filter>
     <Filter Include="source\math">
       <UniqueIdentifier>{2c48195e-eb48-4b20-9b0c-fdc022a52f56}</UniqueIdentifier>
     </Filter>
@@ -18,35 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\source\application.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\main_window.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\utils\utils.cpp">
       <Filter>source\utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\winmain.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\gui\canvas.cpp">
-      <Filter>source\gui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\gui\button.cpp">
-      <Filter>source\gui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\gui\control.cpp">
-      <Filter>source\gui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\gui\d2dcotext.cpp">
-      <Filter>source\gui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\gui\label.cpp">
-      <Filter>source\gui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\gui\textbox.cpp">
-      <Filter>source\gui</Filter>
     </ClCompile>
     <ClCompile Include="..\source\math\math.cpp">
       <Filter>source\math</Filter>
@@ -69,37 +39,16 @@
     <ClCompile Include="..\source\test\2d_stefan.cpp">
       <Filter>source\test</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\main.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\math\stefan_problem_solver.cpp">
+      <Filter>source\math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\source\application.hpp">
-      <Filter>source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\main_window.hpp">
-      <Filter>source</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\utils\utils.hpp">
       <Filter>source\utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\gui\canvas.hpp">
-      <Filter>source\gui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\gui\button.hpp">
-      <Filter>source\gui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\gui\control.hpp">
-      <Filter>source\gui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\gui\d2dcotext.hpp">
-      <Filter>source\gui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\gui\irenderer.hpp">
-      <Filter>source\gui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\gui\label.hpp">
-      <Filter>source\gui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\gui\textbox.hpp">
-      <Filter>source\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\source\math\math.hpp">
       <Filter>source\math</Filter>
@@ -111,6 +60,9 @@
       <Filter>source\math</Filter>
     </ClInclude>
     <ClInclude Include="..\source\math\heat_conductivity.hpp">
+      <Filter>source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\math\stefan_problem_solver.h">
       <Filter>source\math</Filter>
     </ClInclude>
   </ItemGroup>
