@@ -7,7 +7,7 @@ import pylab
 import math
 
 if (len(sys.argv) < 2):
-	print('Pass a file with calculated values as a cmd line argument\n')
+	print('Pass a file with calculated values as a cmd line argument')
 	exit(0)
 
 
@@ -28,6 +28,6 @@ for index, row in enumerate(array):
 		data[index][index2] = value
 
 
-im = plt.matshow(array, cmap=pylab.cm.hot, norm=clr.LogNorm(vmin=0.01, vmax=64), aspect='auto') # pl is pylab imported a pl
+im = plt.matshow(array, cmap=pylab.cm.hot, norm=clr.LogNorm(vmin=0.01, vmax=64), aspect='auto') 
 plt.colorbar(im)
 plt.show()

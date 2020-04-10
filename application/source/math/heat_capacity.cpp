@@ -33,8 +33,11 @@ namespace Math {
         case PARABOLIC:
             approximateParabolic();
             break;
+        case POLYNOMIAL:
+            approximatePolynomial();
+            break;
         default:
-            throw  std::logic_error("Invalid approximation option!");
+            throw std::logic_error("Invalid approximation option!");
         }
     }
 
@@ -100,6 +103,10 @@ namespace Math {
         c2Approximated = [=](auto t) -> Real {
             return a2 * pow2(t) + b2 * t + d2;
         };
+    }
+
+    void HeatCapacitySmoother::approximatePolynomial() {
+        throw std::runtime_error("Not implemented!");
     }
 
 }

@@ -33,6 +33,7 @@ namespace Math {
 		void approximate();
 		void approximateLinear();
 		void approximateParabolic();
+        void approximatePolynomial();
 
 	};
     
